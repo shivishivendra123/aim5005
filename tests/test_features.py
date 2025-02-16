@@ -63,6 +63,13 @@ class TestFeatures(TestCase):
         assert (result == expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected.reshape(1,-1), result.reshape(1,-1))
 
     # TODO: Add a test of your own below this line
+    def test_standard_scaler_get_variance(self):
+        data = [[0, 0], [0, 0], [1, 1], [1, 1]]
+        expected = np.array([0.25,0.25])
+        scaler = StandardScaler()
+        scaler.fit(data)
+        result = scaler.var_
+        assert (result == expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected.reshape(1,-1), result.reshape(1,-1))
     
 if __name__ == '__main__':
     unittest.main()

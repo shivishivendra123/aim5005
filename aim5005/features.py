@@ -42,7 +42,7 @@ class MinMaxScaler:
 class StandardScaler:
     def __init__(self):
         self.mean = None
-        self.std = None
+        self.var_ = None
         
     def _check_is_array(self, x:np.ndarray) -> np.ndarray:
         """
@@ -58,15 +58,15 @@ class StandardScaler:
     def fit(self, x:np.ndarray) -> None:   
         x = self._check_is_array(x)
         self.mean=np.mean(x,axis=0)
-        self.std=np.std(x,axis=0)
+        self.var_ = np.var(x,axis=0)
         
     def transform(self, x:np.ndarray) -> list:
         """
         Standardized Scale the given vector
         """
         x = self._check_is_array(x)        
-        # TODO: There is a bug here... Look carefully! 
-        return (x-self.mean)/self.std
+        
+        return (x-self.mean)/(self.var_**.5)
     
     def fit_transform(self, x:list) -> np.ndarray:
         x = self._check_is_array(x)
