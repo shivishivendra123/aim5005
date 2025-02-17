@@ -20,7 +20,7 @@ class LabelEncoder:
     def fit(self, x:np.ndarray) -> None:
        x = self._check_is_array(x) 
        unique_classes = sorted(set(x))
-       self.classes_ = unique_classes
+       self.classes_ = np.array(unique_classes)
 
     def transform(self,x:np.ndarray)->np.ndarray:
         x = self._check_is_array(x)
@@ -34,5 +34,5 @@ class LabelEncoder:
         x = self._check_is_array(x)
         self.fit(x)
         return self.transform(x)
-        
+    
         

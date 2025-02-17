@@ -10,7 +10,7 @@ class TestFeatures(TestCase):
         
     def test_label_encoder_fit(self):
         label_encoder = LabelEncoder()
-        data = ['animal','cats','cats','dogs']
+        data = np.array(['animal','cats','cats','dogs'])
         expected = np.array(['animal','cats','dogs'])
         label_encoder.fit(data)
         assert (label_encoder.classes_== expected).all(), "lLabel Encoder fit does not return expected values"
